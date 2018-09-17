@@ -4,7 +4,7 @@ RUN apk add --no-cache wget
 
 EXPOSE 25565
 
-RUN mkdir /minecraft && wget -q "https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar" -O /minecraft/minecraft_server.jar
+RUN mkdir /minecraft && wget -q "https://launcher.mojang.com/v1/objects/fe123682e9cb30031eae351764f653500b7396c9/server.jar" -O /minecraft/minecraft_server.jar
 
 WORKDIR /data
 RUN echo "eula=true" > /data/eula.txt
