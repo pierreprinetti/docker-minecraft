@@ -1,6 +1,6 @@
-FROM openjdk:8-alpine
+FROM openjdk:11-jdk
 
-RUN apk add --no-cache wget
+RUN apt update && apt install wget
 
 EXPOSE 25565
 
