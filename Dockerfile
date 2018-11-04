@@ -1,6 +1,6 @@
 FROM openjdk:11-jdk
 
-RUN apt update && apt install wget
+RUN apt-get -y update && apt-get -y install wget
 
 EXPOSE 25565
 
