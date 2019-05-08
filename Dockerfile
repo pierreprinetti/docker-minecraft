@@ -1,10 +1,14 @@
-FROM openjdk:11-jdk
+FROM openjdk:13-alpine
 
-EXPOSE 25565
+RUN apk add --no-cache perl-utils
 
-RUN mkdir /minecraft && wget -q "https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar" -O /minecraft/minecraft_server.jar
+ADD https://launcher.mojang.com/v1/objects/f1a0073671057f01aa843443fef34330281333ce/server.jar /minecraft/minecraft_server.jar
+RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "f1a0073671057f01aa843443fef34330281333ce  -" ]]
 
 WORKDIR /data
-RUN echo "eula=true" > /data/eula.txt
+
+RUN echo "eula=true" > ./eula.txt
+
+EXPOSE 25565
 
 CMD java -Xmx1024M -Xms1024M -jar /minecraft/minecraft_server.jar nogui
