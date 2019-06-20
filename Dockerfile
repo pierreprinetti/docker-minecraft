@@ -2,8 +2,8 @@ FROM openjdk:13-alpine
 
 RUN apk add --no-cache perl-utils
 
-ADD https://launcher.mojang.com/v1/objects/ed76d597a44c5266be2a7fcd77a8270f1f0bc118/server.jar /minecraft/minecraft_server.jar
-RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "ed76d597a44c5266be2a7fcd77a8270f1f0bc118  -" ]]
+ADD https://launcher.mojang.com/v1/objects/808be3869e2ca6b62378f9f4b33c946621620019/server.jar /minecraft/minecraft_server.jar
+RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "808be3869e2ca6b62378f9f4b33c946621620019  -" ]]
 
 WORKDIR /data
 
