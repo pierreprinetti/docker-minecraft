@@ -2,7 +2,13 @@ FROM openjdk:14-alpine
 
 RUN apk add --no-cache perl-utils
 
-ADD https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar /minecraft/minecraft_server.jar
+RUN adduser -DHu 5001 minecraft &&\
+	mkdir -p /data &&\
+	chown minecraft:minecraft /data
+
+USER minecraft:minecraft
+
+ADD --chown=minecraft:minecraft https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar /minecraft/minecraft_server.jar
 RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "3dc3d84a581f14691199cf6831b71ed1296a9fdf  -" ]]
 
 WORKDIR /data
