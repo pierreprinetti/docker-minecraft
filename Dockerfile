@@ -8,8 +8,8 @@ RUN adduser -DHu 5001 minecraft &&\
 
 USER minecraft:minecraft
 
-ADD --chown=minecraft:minecraft https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar /minecraft/minecraft_server.jar
-RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "3dc3d84a581f14691199cf6831b71ed1296a9fdf  -" ]]
+ADD --chown=minecraft:minecraft https://launcher.mojang.com/v1/objects/4d1826eebac84847c71a77f9349cc22afd0cf0a1/server.jar /minecraft/minecraft_server.jar
+RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "4d1826eebac84847c71a77f9349cc22afd0cf0a1  -" ]]
 
 WORKDIR /data
 
