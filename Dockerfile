@@ -1,4 +1,4 @@
-FROM openjdk:14-alpine
+FROM openjdk:16-alpine
 
 RUN apk add --no-cache perl-utils
 
