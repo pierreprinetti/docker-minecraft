@@ -1,10 +1,12 @@
 FROM openjdk:16-alpine
 
+VOLUME ["/data"]
+EXPOSE 25565/tcp
+EXPOSE 25565/udp
+
 RUN apk add --no-cache perl-utils
 
-RUN adduser -DHu 5001 minecraft &&\
-	mkdir -p /data &&\
-	chown minecraft:minecraft /data
+RUN adduser -DHu 5001 minecraft
 
 USER minecraft:minecraft
 
@@ -14,10 +16,5 @@ RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "35139deedbd5182953cf1ca
 WORKDIR /data
 
 RUN echo "eula=true" > ./eula.txt
-
-EXPOSE 25565/tcp
-EXPOSE 25565/udp
-
-VOLUME ["/data"]
 
 CMD java -Xmx1024M -Xms1024M -jar /minecraft/minecraft_server.jar nogui

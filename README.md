@@ -2,10 +2,15 @@
 
 ## Running docker-minecraft
 
+To improve security, Minecraft runs in this image as an unprivileged user (with
+id 5001). In order to prepare the volume to be used by a non-root user, `chown`
+must be run on the root folder of the volume.
+
+Here's how you can do it:
+
 ```shell
 docker volume create minecraft-data
-docker run --rm -v minecraft-data:/data quay.io/pierreprinetti/minecraft:chown
+podman run --rm -it -v minecraft-data:/data alpine chown -R 5001:5001 /data
 docker run -d --name minecraft -p 25565:25565 -p 25565:25565/udp -v minecraft-data:/data quay.io/pierreprinetti/minecraft
 ```
 
-The container runs as an unprivileged user. The second command will run `chown` on the target volume, then exit.
