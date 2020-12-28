@@ -15,6 +15,4 @@ RUN [[ "$(shasum < /minecraft/minecraft_server.jar)" == "35139deedbd5182953cf1ca
 
 WORKDIR /data
 
-RUN echo "eula=true" > ./eula.txt
-
 CMD java -Xmx1024M -Xms1024M -jar /minecraft/minecraft_server.jar nogui
